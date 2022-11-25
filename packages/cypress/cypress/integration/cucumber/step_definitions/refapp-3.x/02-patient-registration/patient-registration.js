@@ -5,6 +5,9 @@ When('the user clicks on the add patient icon', () => {
 })
 
 When('the user enters {string} details for Andria Faiza', validity => {
+    // Increase the timeout as this page gets a long time to fully loaded
+    Cypress.config('defaultCommandTimeout', 80000);
+
     const details = {
         correct: {
             givenName: 'Andria',
@@ -28,7 +31,6 @@ When('the user enters {string} details for Andria Faiza', validity => {
         throw new Error(`Validity '${validity}' is not supported`);
     }
     const user = details[validity];
-
     cy.contains('Register Patient').should('not.be.disabled')
 
     if (user.givenName != null) {
