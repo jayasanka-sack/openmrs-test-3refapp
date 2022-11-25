@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "scripts": {
     "delete:reports": "rm cypress/results/* || true",
-    "devCypress": "CYPRESS_BASE_URL=http://localhost:8080/openmrs/spa cypress open --env API_BASE_URL=http://localhost:8080/openmrs/ws/rest/v1",
+    "devCypress": "CYPRESS_BASE_URL=http://localhost:8080/openmrs/spa cypress run --env API_BASE_URL=http://localhost:8080/openmrs/ws/rest/v1",
     "combine:reports": "jrm cypress/results/combined-report.xml \"cypress/results/*.xml\"",
     "allCypressTest": "cypress run --spec 'resources/features/refapp-3.x/**/*.feature' --reporter junit --reporter-options mochaFile='cypress/results/test-[hash].xml',outputs=true",
     "refappCypress": "npm-run-all delete:reports allCypressTest combine:reports -c",
